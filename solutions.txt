@@ -1,0 +1,22 @@
+#!/bin/bash
+file=./cities.txt
+#1: 
+grep '^Z' $file
+#2: 
+grep 'gan$' $file
+#3:
+grep -c '^[ADE]' $file
+#4:
+grep -c '\<.ar' $file
+#5:
+grep -vc '^C' $file
+#6:
+grep -E '[^ ]{14,}' $file
+#7:
+grep -c '^B' $file
+#8: 
+grep -o 'd' $file | wc -l
+#9:
+grep -iE '(.)\1$' $file
+#10:
+grep -iE '^(.)(.).\2\1$' $file
