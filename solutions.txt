@@ -19,4 +19,7 @@ grep -o 'd' $file | wc -l
 #9:
 grep -iE '(.)\1$' $file
 #10:
-grep -iE '^(.)(.).\2\1$' $file
+grep -iEx '(.)(.).\2\1' $file
+#10+:
+#Not really in the spirit of this assignment, but it uses grep ¯\_(ツ)_/¯
+for i in $(seq $(expr $(wc -L < cities.txt) / 2)); do grep -Eix -e`printf '(.)%.0s' $(seq $i)`'\'`seq -s '\' $i -1 1` -e`printf '(.)%.0s' $(seq $i)`'.\'`seq -s '\' $i -1 1` cities.txt;done
