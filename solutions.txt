@@ -1,25 +1,38 @@
 #!/bin/bash
-file=./cities.txt
+file=cities.txt
+bold=$(tput bold)
+normal=$(tput sgr0)
 #1: 
+echo "${bold}Problem 1${normal}"
 grep '^Z' $file
-#2: 
+#2:
+echo "${bold}Problem 2${normal}"
 grep 'gan$' $file
 #3:
+echo "${bold}Problem 3${normal}"
 grep -c '^[ADE]' $file
 #4:
+echo "${bold}Problem 4${normal}"
 grep -c '\<.ar' $file
 #5:
+echo "${bold}Problem 5${normal}"
 grep -vc '^C' $file
 #6:
+echo "${bold}Problem 6${normal}"
 grep -E '[^ ]{14,}' $file
 #7:
+echo "${bold}Problem 7${normal}"
 grep -c '^B' $file
 #8: 
+echo "${bold}Problem 8${normal}"
 grep -o 'd' $file | wc -l
 #9:
+echo "${bold}Problem 9${normal}"
 grep -iE '(.)\1$' $file
 #10:
+echo "${bold}Problem 10${normal}"
 grep -iEx '(.)(.).\2\1' $file
 #10+:
 #Not really in the spirit of this assignment, but it uses grep ¯\_(ツ)_/¯
-for i in $(seq $(expr $(wc -L < cities.txt) / 2)); do grep -Eix -e`printf '(.)%.0s' $(seq $i)`'\'`seq -s '\' $i -1 1` -e`printf '(.)%.0s' $(seq $i)`'.\'`seq -s '\' $i -1 1` cities.txt;done
+echo "${bold}Problem 10 (Challenge Problem)${normal}"
+for i in $(seq $(expr $(wc -L < $file) / 2)); { grep -Eix -e`printf '(.)%.0s' $(seq $i)`'\'`seq -s '\' $i -1 1` -e`printf '(.)%.0s' $(seq $i)`'.\'`seq -s '\' $i -1 1` $file;}
