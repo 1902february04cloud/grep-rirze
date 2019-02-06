@@ -33,6 +33,18 @@ grep -iE '(.)\1$' $file
 echo "${bold}Problem 10${normal}"
 grep -iEx '(.)(.).\2\1' $file
 #10+:
-#Not really in the spirit of this assignment, but it uses grep ¯\_(ツ)_/¯
 echo "${bold}Problem 10 (Challenge Problem)${normal}"
-for i in $(seq $(expr $(wc -L < $file) / 2)); { grep -iEx -e`printf '(.)%.0s' $(seq $i)`'\'`seq -s '\' $i -1 1` -e`printf '(.)%.0s' $(seq $i)`'.\'`seq -s '\' $i -1 1` $file;}
+#first attempt: Not really in the spirit of this assignment, but it uses grep ¯\_(ツ)_/¯
+#for i in $(seq $(expr $(wc -L < $file) / 2)); { grep -iEx `printf '(.)%.0s' $(seq $i)`'.?\'`seq -s '\' $i -1 1`  $file;}
+#second one: perl magic found online [https://stackoverflow.com/a/3747442]
+grep -iPx '(?:(.)(?=.*(\1(?(2)\2|))$))*.?\2?' $file
+
+# Anina
+# Navan
+# Noxon
+# Ateleta
+# Amassama
+# Caraparac
+# Anahanahana
+
+#(?:(.)(?=.*(\1(?(2)\2|))$))*.?\2?
