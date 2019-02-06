@@ -19,7 +19,7 @@ echo "${bold}Problem 5${normal}"
 grep -vc '^C' $file
 #6:
 echo "${bold}Problem 6${normal}"
-grep -E '[^ ]{14,}' $file
+grep -E '\S{14,}' $file
 #7:
 echo "${bold}Problem 7${normal}"
 grep -c '^B' $file
@@ -35,4 +35,4 @@ grep -iEx '(.)(.).\2\1' $file
 #10+:
 #Not really in the spirit of this assignment, but it uses grep ¯\_(ツ)_/¯
 echo "${bold}Problem 10 (Challenge Problem)${normal}"
-for i in $(seq $(expr $(wc -L < $file) / 2)); { grep -Eix -e`printf '(.)%.0s' $(seq $i)`'\'`seq -s '\' $i -1 1` -e`printf '(.)%.0s' $(seq $i)`'.\'`seq -s '\' $i -1 1` $file;}
+for i in $(seq $(expr $(wc -L < $file) / 2)); { grep -iEx -e`printf '(.)%.0s' $(seq $i)`'\'`seq -s '\' $i -1 1` -e`printf '(.)%.0s' $(seq $i)`'.\'`seq -s '\' $i -1 1` $file;}
